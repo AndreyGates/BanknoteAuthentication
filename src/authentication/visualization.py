@@ -4,7 +4,7 @@ from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 from matplotlib import pyplot as plt
 
-from auxil import str_column_to_float
+from authentication.auxil import str_column_to_float
 
 def visualize_RF(dataset):
     # Перевод данных в float

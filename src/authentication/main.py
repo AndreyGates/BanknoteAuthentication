@@ -1,9 +1,9 @@
 from random import seed
-from RandomForest import RandomForest
+from authentication.RandomForest import RandomForest
 from numpy import sqrt
 
-from auxil import *
-from visualization import *
+from authentication.auxil import *
+from authentication.visualization import *
 
 """База данных включается в себя такие особенности изображений банкнот как:
     1) дисперсия преобразования вейвлет (непрерывные значения)
@@ -46,4 +46,5 @@ def main():
 
     visualize_RF(dataset)
 
-main()
+if __name__ == "__main__":
+    main()

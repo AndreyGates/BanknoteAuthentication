@@ -32,7 +32,7 @@ def cross_validation_split(dataset, n_folds):
     for i in range(n_folds): 
         # разделяем данные на несколько подгрупп, 
         # каждая из которых будет тестовой выборкой при многократной оценке модели
-        fold = list()
+        fold = list() 
         while len(fold) < fold_size:
             index = randrange(len(dataset_copy))
             fold.append(dataset_copy.pop(index))

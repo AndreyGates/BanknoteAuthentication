@@ -1,5 +1,5 @@
 from random import randrange
-from DecisionTreeClassifier import * 
+from authentication.DecisionTreeClassifier import * 
 
 class RandomForest():
     def __init__(self, max_depth, min_size, sample_size, n_trees, n_features):
