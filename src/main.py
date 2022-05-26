@@ -1,4 +1,6 @@
 from random import seed
+from RandomForest import RandomForest
+from numpy import sqrt
 
 from auxil import *
 from DecisionTreeClassifier import *
@@ -16,7 +18,7 @@ def main():
     seed(1)
 
     # Загрузка и подготовка данных
-    filename = 'data_banknote_authentication.csv'
+    filename = 'C:/Users/pisar/Desktop/GitHub/Repositories/BanknoteAuthentication/src/data_banknote_authentication.csv'
     dataset = load_csv(filename)
 
     # Перевод данных в float
@@ -24,17 +26,24 @@ def main():
         str_column_to_float(dataset, i)
 
     # Оценка алгоритма
-    n_folds = 3 # кол-во подгрупп cross-validation разбиения
 
+    # Decision Tree features
+    n_folds = 3 # кол-во подгрупп cross-validation разбиения
     max_depth = 5 # максимальная глубина дерева
     min_size = 15 # минимальное число элементов в одном узле
 
-    DTC = DecisionTreeClassifier(max_depth, min_size)
+    # Random Forest features
+    sample_size = 1.0 # доля ко всей выборке
+    n_features = int(sqrt(len(dataset[0])-1)) # кол-во свойств для bagging
+    #n_trees = 5 # кол-во деревьев
 
-    scores = DTC.evaluate_algorithm(dataset, DTC.decision_tree, n_folds)
-    print('Scores: %s' % scores)
-    print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
+    for n_trees in [1, 5, 10]:
+        RF = RandomForest(max_depth, min_size, sample_size, n_trees, n_features)
+        scores = evaluate_algorithm(dataset, RF.random_forest, n_folds)
+        print('Trees: %d' % n_trees)
+        print('Scores: %s' % scores)
+        print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
-    visualize_DT(max_depth, min_size)
+    #visualize_DT(max_depth, min_size)
 
 main()

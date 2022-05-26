@@ -4,57 +4,6 @@ class DecisionTreeClassifier():
 	def __init__(self, max_depth, min_size):
 		self.max_depth = max_depth
 		self.min_size = min_size
-
-	def fit(self, X, y):
-		self.ds_ = X + y
-		
-		return self.build_tree(self.ds_)
-
-	# Кросс-валидация k-fold (вследствие ограниченного кол-ва данных)
-	def cross_validation_split(self, dataset, n_folds):
-		dataset_split = list()
-		dataset_copy = list(dataset)
-		fold_size = int(len(dataset) / n_folds)
-
-		for i in range(n_folds): 
-			# разделяем данные на несколько подгрупп, 
-			# каждая из которых будет тестовой выборкой при многократной оценке модели
-			fold = list()
-			while len(fold) < fold_size:
-				index = randrange(len(dataset_copy))
-				fold.append(dataset_copy.pop(index))
-			dataset_split.append(fold)
-		return dataset_split
-	
-	# Расчет точности модели
-	def accuracy_metric(self, actual, predicted):
-		correct = 0
-		for i in range(len(actual)):
-			if actual[i] == predicted[i]:
-				correct += 1
-		return correct / float(len(actual)) * 100.0
-	
-	# Оценка алгоритма для каждой пары "обучающая выборка - тестовая выборка"
-	def evaluate_algorithm(self, dataset, algorithm, n_folds):
-		folds = self.cross_validation_split(dataset, n_folds)
-		scores = list()
-		for fold in folds:
-			train_set = list(folds)
-			train_set.remove(fold)
-			train_set = sum(train_set, [])
-			test_set = list()
-
-			for row in fold:
-				row_copy = list(row)
-				test_set.append(row_copy)
-				row_copy[-1] = None
-
-			predicted = algorithm(train_set, test_set)
-			actual = [row[-1] for row in fold]
-			accuracy = self.accuracy_metric(actual, predicted)
-			scores.append(accuracy)
-
-		return scores # точности для каждой тестовой выборки
 	
 	# Разделение данных по критерию (условие if-else)
 	def test_split(self, index, value, dataset):
@@ -93,10 +42,15 @@ class DecisionTreeClassifier():
 		return gini
 	
 	# Выбор лучшего критерия разделения (с наименьшим значением индекса Джини)
-	def get_split(self, dataset):
+	def get_split(self, dataset, n_features):
 		class_values = list(set(row[-1] for row in dataset))
 		b_index, b_value, b_score, b_groups = 999, 999, 999, None
-		for index in range(len(dataset[0])-1): # проводим цикл расчета индекса Джини по всем атрибутам и их значениям
+		features = list()
+		while len(features) < n_features:
+			index = randrange(len(dataset[0])-1)
+			if index not in features:
+				features.append(index)
+		for index in features:
 			for row in dataset:
 				groups = self.test_split(index, row[index], dataset)
 				gini = self.gini_index(groups, class_values)
@@ -110,7 +64,7 @@ class DecisionTreeClassifier():
 		return max(set(outcomes), key=outcomes.count) # присвоение узлу того класса, в котором больше элементов из группы
 	
 	# Добавление узлов-потомков для узла или преобразование узла в конечный (рекурсионно)
-	def split(self, node, depth):
+	def split(self, node, n_features, depth):
 		left, right = node['groups']
 		del(node['groups']) # удаляем данные до разделения
 
@@ -127,45 +81,32 @@ class DecisionTreeClassifier():
 		if len(left) <= self.min_size:
 			node['left'] = self.to_terminal(left)
 		else:
-			node['left'] = self.get_split(left)
-			self.split(node['left'], depth+1)
+			node['left'] = self.get_split(left, n_features)
+			self.split(node['left'], n_features, depth+1)
 
 		# обработка правого потомка
 		if len(right) <= self.min_size:
 			node['right'] = self.to_terminal(right)
 		else:
-			node['right'] = self.get_split(right)
-			self.split(node['right'], depth+1)
+			node['right'] = self.get_split(right, n_features)
+			self.split(node['right'], n_features, depth+1)
 	
 	# Построение дерева решений
-	def build_tree(self, train):
-		root = self.get_split(train)
-		self.split(root, 1)
+	def build_tree(self, train, n_features):
+		root = self.get_split(train, n_features)
+		self.split(root, n_features, 1)
 		return root # возвращаем полученное из корня дерево
 	
 	# Предсказание после обучения модели (рекурсионно)
-	def predict(self, node, row):
+	@staticmethod
+	def predict(node, row):
 		if row[node['index']] < node['value']:
 			if isinstance(node['left'], dict):
-				return self.predict(node['left'], row)
+				return DecisionTreeClassifier.predict(node['left'], row)
 			else:
 				return node['left']
 		else:
 			if isinstance(node['right'], dict):
-				return self.predict(node['right'], row)
+				return DecisionTreeClassifier.predict(node['right'], row)
 			else:
 				return node['right']
-	
-	# CART алгоритм и предсказание
-	def decision_tree(self, train, test):
-		tree = self.build_tree(train)
-		predictions = list()
-
-		for row in test: # предсказание на тестовой выборке
-			prediction = self.predict(tree, row)
-			predictions.append(prediction)
-
-		return(predictions)
-
-
-
