@@ -9,6 +9,8 @@ class RandomForest():
         self.n_trees = n_trees # random forest size (number of trees)
         self.n_features = n_features # number of features for feature selection (after bootstrapping)
 
+        self.trees = []
+
     # Create a random subsample from the dataset with replacement
     def subsample(self, dataset, ratio):
         sample = list()
@@ -33,6 +35,8 @@ class RandomForest():
             sample = self.subsample(train, self.sample_size)
             tree = DT.build_tree(sample, self.n_features)
             trees.append(tree)
+
+        self.trees = trees
 
         predictions = [self.bagging_predict(trees, row) for row in test]
         return predictions
