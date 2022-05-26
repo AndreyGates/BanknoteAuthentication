@@ -4,7 +4,6 @@ from numpy import sqrt
 
 from auxil import *
 from visualization import *
-from DecisionTreeClassifier import *
 
 """База данных включается в себя такие особенности изображений банкнот как:
     1) дисперсия преобразования вейвлет (непрерывные значения)
