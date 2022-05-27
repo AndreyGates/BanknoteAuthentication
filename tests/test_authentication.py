@@ -1,5 +1,5 @@
 # from authentication.visualization import visualize_RF
-from authentication.auxil import file, load_csv, str_column_to_float, evaluate_algorithm
+from authentication.auxil import load_csv, str_column_to_float, evaluate_algorithm
 from authentication.RandomForest import RandomForest
 
 from random import seed
@@ -10,7 +10,8 @@ def test_authentication():
     seed(1)
 
     # Загрузка и подготовка данных
-    filename = file
+    filename = 'C:/Users/pisar/Desktop/GitHub/Repositories/BanknoteAuthentication/tests/data_banknote_authentication.csv'
+
     dataset = load_csv(filename)
 
     # Перевод данных в float
