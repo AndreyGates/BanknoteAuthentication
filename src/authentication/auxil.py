@@ -2,6 +2,7 @@ from csv import reader
 from random import randrange
 from typing import List
 
+file = 'C:/Users/pisar/Desktop/GitHub/Repositories/BanknoteAuthentication/src/data_banknote_authentication.csv'
 
 # Загрузка CSV файла с данными
 def load_csv(filename):
