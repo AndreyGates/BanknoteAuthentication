@@ -2,6 +2,8 @@
 from authentication.auxil import load_csv, str_column_to_float, evaluate_algorithm
 from authentication.RandomForest import RandomForest
 
+from authentication.visualization import visualize_RF
+
 from random import seed
 from math import sqrt
 
@@ -36,5 +38,13 @@ def test_authentication():
         print('Trees: %d' % n_trees)
         print('Scores: %s' % scores)
         print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
+        
+        visualize_RF(dataset)
 
         assert sum(scores)/float(len(scores)) >= 80
+
+def test_visualization():
+    pass
+
+def main():
+    test_authentication()

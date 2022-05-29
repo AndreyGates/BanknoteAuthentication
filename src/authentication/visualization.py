@@ -1,4 +1,4 @@
-"""import matplotlib.colors as mcolors
+import matplotlib.colors as mcolors
 import numpy as np
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
@@ -6,14 +6,14 @@ from matplotlib import pyplot as plt
 
 from authentication.auxil import str_column_to_float
 
-"""
 
 
-def visualize_RF(dataset):
-    pass
+
+#def visualize_RF(dataset):
+    #pass
 
 
-"""
+
 
 def visualize_RF(dataset):
     # Перевод данных в float
@@ -24,7 +24,7 @@ def visualize_RF(dataset):
     y = ds[:, [4]]
     y = y.ravel() # flattening
 
-    rf = RandomForestClassifier(max_depth=2, random_state=0, n_estimators=3)
+    rf = RandomForestClassifier(max_depth=3, random_state=0, n_estimators=3)
     rf.fit(X, y)
 
     colors = ['red', 'blue'] # visualization of nodes
@@ -46,4 +46,4 @@ def visualize_RF(dataset):
 
     # axes[index].set_title('Estimator: ' + str(index), fontsize = 11)
     fig.savefig('C:/Users/pisar/Desktop/GitHub/Repositories/BanknoteAuthentication/src/random_forest.png')
-"""
+
