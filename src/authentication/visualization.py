@@ -37,3 +37,5 @@ def visualize_RF(dataset):
 
     # axes[index].set_title('Estimator: ' + str(index), fontsize = 11)
     fig.savefig('../BanknoteAuthentication/src/random_forest.png')
+    
+    return 0  # pseudo meaning the image was saved successfully

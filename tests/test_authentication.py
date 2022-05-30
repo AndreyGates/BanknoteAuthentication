@@ -1,4 +1,3 @@
-import matplotlib
 from authentication.auxil import load_csv, str_column_to_float, evaluate_algorithm
 from authentication.RandomForest import RandomForest
 
@@ -39,12 +38,14 @@ def test_authentication():
         print('Scores: %s' % scores)
         print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
-        visualize_RF(dataset)
-
         assert sum(scores)/float(len(scores)) >= 80
 
 
 def test_visualization():
-    pass
+    seed(1)
 
-test_authentication()
+    # Загрузка и подготовка данных
+    filename = '../BanknoteAuthentication/tests/data_banknote_authentication.csv'
+    dataset = load_csv(filename)
+
+    assert visualize_RF(dataset) == 0
