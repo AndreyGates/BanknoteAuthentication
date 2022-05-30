@@ -1,4 +1,4 @@
-# from authentication.visualization import visualize_RF
+import matplotlib
 from authentication.auxil import load_csv, str_column_to_float, evaluate_algorithm
 from authentication.RandomForest import RandomForest
 
@@ -12,7 +12,7 @@ def test_authentication():
     seed(1)
 
     # Загрузка и подготовка данных
-    filename = 'C:/Users/pisar/Desktop/GitHub/Repositories/BanknoteAuthentication/tests/data_banknote_authentication.csv'
+    filename = '../BanknoteAuthentication/tests/data_banknote_authentication.csv'
 
     dataset = load_csv(filename)
 
@@ -38,13 +38,13 @@ def test_authentication():
         print('Trees: %d' % n_trees)
         print('Scores: %s' % scores)
         print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
-        
+
         visualize_RF(dataset)
 
         assert sum(scores)/float(len(scores)) >= 80
 
+
 def test_visualization():
     pass
 
-def main():
-    test_authentication()
+test_authentication()
