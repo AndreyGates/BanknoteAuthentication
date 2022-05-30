@@ -36,4 +36,4 @@ def visualize_RF(dataset):
             artist.get_bbox_patch().set_edgecolor('black')
 
     # axes[index].set_title('Estimator: ' + str(index), fontsize = 11)
-    fig.savefig('C:/Users/pisar/Desktop/GitHub/Repositories/BanknoteAuthentication/src/random_forest.png')
+    fig.savefig('../BanknoteAuthentication/src/random_forest.png')
