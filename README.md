@@ -35,7 +35,7 @@ command to run if program contains helper info
 
 ## Authors
 
-Andrey Pisarevsky 
+Andrey Pisarevsky\
 E-mail: pisarevskiy1977@gmail.com
 
 ## Version History
