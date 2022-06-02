@@ -37,7 +37,6 @@ def test_authentication():
         print('Trees: %d' % n_trees)
         print('Scores: %s' % scores)
         print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
-
         assert sum(scores)/float(len(scores)) >= 80
 
 
@@ -49,6 +48,7 @@ def test_visualization():
     dataset = load_csv(filename)
 
     assert visualize_RF(dataset) == 0
+
 
 test_authentication()
 test_visualization()

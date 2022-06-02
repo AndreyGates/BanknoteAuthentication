@@ -61,5 +61,6 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
+* [testing-automation](https://github.com/mCodingLLC/SlapThatLikeButton-TestingStarterProject)
 * [awesome-readme](https://github.com/matiassingers/awesome-readme)
 * [dbader](https://github.com/dbader/readme-template)
