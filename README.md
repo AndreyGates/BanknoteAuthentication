@@ -23,7 +23,7 @@ Evaluating the random forest and visualizing it are available now.
 
 ### Dataset
 
-[Here](../BanknoteAuthentication/src/authentication/dataset_info.txt) you can find information about the dataset used for this application.
+[Here](https://github.com/AndreyGates/BanknoteAuthentication/blob/main/src/authentication/dataset_info.txt) you can find information about the dataset used for this application.
 
 ### Screenshots
 * Banknote sample:
