@@ -23,7 +23,7 @@ def test_authentication():
 
     # Decision Tree features
     n_folds = 3  # кол-во подгрупп cross-validation разбиения
-    max_depth = 2  # максимальная глубина дерева
+    max_depth = 5  # максимальная глубина дерева
     min_size = 10  # минимальное число элементов в одном узле
 
     # Random Forest features
@@ -31,7 +31,7 @@ def test_authentication():
     n_features = int(sqrt(len(dataset[0])-1))  # кол-во свойств для bagging
     # n_trees = 5  # кол-во деревьев
 
-    for n_trees in [1]:
+    for n_trees in [1, 2, 3]:
         RF = RandomForest(max_depth, min_size, sample_size, n_trees, n_features)
         scores = evaluate_algorithm(dataset, RF.random_forest, n_folds)
         print('Trees: %d' % n_trees)
@@ -49,3 +49,6 @@ def test_visualization():
     dataset = load_csv(filename)
 
     assert visualize_RF(dataset) == 0
+
+test_authentication()
+test_visualization()

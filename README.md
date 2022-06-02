@@ -1,37 +1,28 @@
-# Banknote Authentication
-
-![Tests](https://github.com/AndreyGates/BanknoteAuthentication/actions/workflows/tests.yml/badge.svg)
+# Banknote Authentication &middot; ![Tests](https://github.com/AndreyGates/BanknoteAuthentication/actions/workflows/tests.yml/badge.svg) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
 ## Description
 
 The project is based on predicting whether a given banknote is authentic given a number of measures taken from a photograph.
 
+Moreover, the repository includes testing automation which enables the program to be tested manually by users or automatically via GitHub Actions.
+
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* python: ">= 3.8", file: "requirements.txt" 
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+Clone the repository onto your own computer: https://github.com/AndreyGates/BanknoteAuthentication
 
-### Executing program
+## Usage
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+Address test_authentication.py in "tests" folder to run the test functions contained within the file.\
+Evaluating the random forest and visualizing it are available now.
 
-## Help
+## Screenshots
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 

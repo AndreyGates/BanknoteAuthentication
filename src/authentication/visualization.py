@@ -15,7 +15,7 @@ def visualize_RF(dataset):
     y = ds[:, [4]]
     y = y.ravel()  # flattening
 
-    rf = RandomForestClassifier(max_depth=3, random_state=0, n_estimators=3)
+    rf = RandomForestClassifier(max_depth=5, min_samples_leaf=10, random_state=0, n_estimators=3)
     rf.fit(X, y)
 
     colors = ['red', 'blue']  # visualization of nodes
@@ -36,6 +36,6 @@ def visualize_RF(dataset):
             artist.get_bbox_patch().set_edgecolor('black')
 
     # axes[index].set_title('Estimator: ' + str(index), fontsize = 11)
-    fig.savefig('../BanknoteAuthentication/src/random_forest.png')
+    fig.savefig('../BanknoteAuthentication/tests/random_forest.png')
     
     return 0  # pseudo meaning the image was saved successfully
