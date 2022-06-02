@@ -21,8 +21,26 @@ Clone the repository onto your own computer: https://github.com/AndreyGates/Bank
 Address test_authentication.py in "tests" folder to run the test functions contained within the file.\
 Evaluating the random forest and visualizing it are available now.
 
-## Screenshots
+### Dataset
 
+[Here](../BanknoteAuthentication/src/authentication/dataset_info.txt) you can find information about the dataset used for this application.
+
+### Screenshots
+* Banknote sample:
+
+![Banknote sample](../BanknoteAuthentication/tests/banknote_sample.PNG) 
+
+* Wavelet transform:
+
+![Wavelet transform](../BanknoteAuthentication/tests/wavelet_transform.PNG)
+
+* Model accuracy:
+
+![Model accuracy](../BanknoteAuthentication/tests/model_accuracy.PNG)
+
+* Random forest:
+
+![Random forest](../BanknoteAuthentication/tests/random_forest.PNG)
 
 ## Authors
 
@@ -33,7 +51,6 @@ E-mail: pisarevskiy1977@gmail.com
 
 * 0.2
     * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
     * Initial Release
 
