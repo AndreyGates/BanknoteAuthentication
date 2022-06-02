@@ -28,7 +28,7 @@ Evaluating the random forest and visualizing it are available now.
 ### Screenshots
 * Banknote sample:
 
-![Banknote sample](../BanknoteAuthentication/tests/banknote_sample.PNG) 
+![Banknote sample](https://github.com/AndreyGates/BanknoteAuthentication/blob/main/tests/banknote_sample.png) 
 
 * Wavelet transform:
 
