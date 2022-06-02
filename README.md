@@ -32,15 +32,15 @@ Evaluating the random forest and visualizing it are available now.
 
 * Wavelet transform:
 
-![Wavelet transform](../BanknoteAuthentication/tests/wavelet_transform.PNG)
+![Wavelet transform](https://github.com/AndreyGates/BanknoteAuthentication/blob/main/tests/wavelet_transform.png)
 
 * Model accuracy:
 
-![Model accuracy](../BanknoteAuthentication/tests/model_accuracy.PNG)
+![Model accuracy](https://github.com/AndreyGates/BanknoteAuthentication/blob/main/tests/model_accuracy.png)
 
 * Random forest:
 
-![Random forest](../BanknoteAuthentication/tests/random_forest.PNG)
+![Random forest](https://github.com/AndreyGates/BanknoteAuthentication/blob/main/tests/random_forest.png)
 
 ## Authors
 
