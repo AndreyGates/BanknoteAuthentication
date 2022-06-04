@@ -14,7 +14,9 @@ Moreover, the repository includes testing automation which enables the program t
 
 ### Installing
 
-Clone the repository onto your own computer: https://github.com/AndreyGates/BanknoteAuthentication
+```
+$ git clone https://github.com/AndreyGates/BanknoteAuthentication
+```
 
 ## Usage
 
